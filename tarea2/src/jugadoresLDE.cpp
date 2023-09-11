@@ -21,7 +21,7 @@ TJugadoresLDE crearTJugadoresLDE()
     TJugadoresLDE jugadores = new rep_jugadoresLDE;
     jugadores->inicio = NULL;
     jugadores->fin = NULL;
-    jugadores->cantidad = 0; // Inicializar la cantidad en 0
+    jugadores->cantidad = 0; 
     return jugadores;
 }
 
@@ -35,26 +35,26 @@ void insertarTJugadoresLDE(TJugadoresLDE &jugadores, TJugador &jugador, TFecha &
     nuevoNodo->sig = NULL;
     nuevoNodo->ant = NULL;
 
-    // Caso 1: La lista está vacía, el nuevo nodo se convierte en el único elemento
+    
     if (jugadores->inicio == NULL)
     {
         jugadores->inicio = nuevoNodo;
-        jugadores->fin = nuevoNodo; // Cuando hay un solo elemento, inicio y fin apuntan al mismo nodo
-        jugadores->cantidad = 1;    // Aumentar la cantidad a 1
+        jugadores->fin = nuevoNodo; 
+        jugadores->cantidad = 1;   
         return;
     }
 
-    // Caso 2: El nuevo nodo debe ir al inicio de la lista (fecha más reciente)
+   
     if (compararTFechas(fecha, jugadores->inicio->fecha) > 0 || (compararTFechas(fecha, jugadores->inicio->fecha) == 0 && idTJugador(jugador) > idTJugador(jugadores->inicio->jugador)))
     {
         nuevoNodo->sig = jugadores->inicio;
         jugadores->inicio->ant = nuevoNodo;
         jugadores->inicio = nuevoNodo;
-        jugadores->cantidad++; // Aumentar la cantidad
+        jugadores->cantidad++; 
         return;
     }
 
-    // Caso 3: El nuevo nodo debe ir en medio o al final de la lista
+    
     rep_nodo *actual = jugadores->inicio;
     while (actual->sig != NULL && (compararTFechas(fecha, actual->sig->fecha) < 0 || (compararTFechas(fecha, actual->sig->fecha) == 0 && idTJugador(jugador) > idTJugador(actual->sig->jugador))))
     {
