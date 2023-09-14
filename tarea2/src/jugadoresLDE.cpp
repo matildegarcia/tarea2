@@ -68,6 +68,7 @@ void insertarTJugadoresLDE(TJugadoresLDE &jugadores, TJugador &jugador, TFecha &
     }
     nuevoNodo->ant = actual;
     actual->sig = nuevoNodo;
+    jugadores->fin =nuevoNodo;
     jugadores->cantidad++;
 }
 
